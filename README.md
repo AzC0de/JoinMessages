@@ -12,8 +12,8 @@ JoinMessages is a Spigot plugin that allows you to customize the incoming, outgo
 
 ### Installation
 
-1. Download the file`.jar' of the plugin and place it in the 'plugins' folder of your Spigot server.
-2. Restart or load the server so that the configuration file ('config.yml`) of the plugin in the `plugins/PluginName' folder.
+1. Download the file'.jar' of the plugin and place it in the 'plugins' folder of your Spigot server.
+2. Restart or load the server so that the configuration file ('config.yml') of the plugin in the 'plugins/PluginName' folder.
 3. Edit the 'config file.yml` to customize the messages and options according to your preferences.
 4. Restart or reload the server to apply the configuration changes.
 ###
