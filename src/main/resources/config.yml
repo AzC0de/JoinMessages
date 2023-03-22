@@ -1,0 +1,13 @@
+
+join-message:
+  enabled: true
+  text: "&e[+] &a%player_displayname% &ejoined the server!"
+quit-message:
+  enabled: true
+  text: "&e[-] &c%player_displayname% &eleft the server."
+welcome-message:
+  enabled: true
+  lines:
+    - "&aWelcome, &b%player_displayname%&a!"
+    - "&bHave a great time on our server!"
+    - "&eEnjoy your stay!"

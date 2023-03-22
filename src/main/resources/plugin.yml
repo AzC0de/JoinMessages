@@ -1,0 +1,7 @@
+name: JoinMessages
+version: 1.0.0
+author: azc0de
+main: me.azc0de.joinmessages.main
+dependencies:
+  - PlaceholderAPI
+description: Un plugin personalizado para mensajes de entrada, salida y bienvenida con compatibilidad con PlaceholderAPI.
