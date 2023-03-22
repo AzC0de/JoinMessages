@@ -2,6 +2,7 @@
 
 JoinMessages is a Spigot plugin that allows you to customize the incoming, outgoing and welcome messages in the server chat. The plugin is compatible with PlaceholderAPI, which allows you to use placeholders in messages. It also supports welcome messages with multiple lines.
 
+![Example](https://i.imgur.com/NrQevbw.png)
 ### Characteristics
 
 - Customization of incoming and outgoing server messages.
