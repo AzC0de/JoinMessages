@@ -2,6 +2,7 @@
 join-message:
   enabled: true
   text: "&e[+] &a%player_displayname% &ejoined the server!"
+  sound: ENTITY_PLAYER_LEVELUP
 quit-message:
   enabled: true
   text: "&e[-] &c%player_displayname% &eleft the server."
@@ -11,3 +12,10 @@ welcome-message:
     - "&aWelcome, &b%player_displayname%&a!"
     - "&bHave a great time on our server!"
     - "&eEnjoy your stay!"
+title-messages:
+  enabled: true
+  title: "§aWelcome to the Server!"
+  subtitle: "§bEnjoy Your Stay!"
+  fade-in: 20
+  stay: 60
+  fade-out: 20
