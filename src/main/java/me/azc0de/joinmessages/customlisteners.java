@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-
+import org.bukkit.Sound;
 import java.util.List;
 
 public class customlisteners implements Listener {
@@ -21,35 +21,52 @@ public class customlisteners implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f);
 
-        // Mensaje de bienvenida en el chat
         if (plugin.getConfig().getBoolean("welcome-message.enabled")) {
             List<String> welcomeMessageLines = plugin.getConfig().getStringList("welcome-message.lines");
             for (String line : welcomeMessageLines) {
                 String welcomeMessage = ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(player, line));
                 player.sendMessage(welcomeMessage);
             }
+        } else {
+            event.setJoinMessage(null);
         }
 
-        // Mensaje de entrada al servidor
-        if (plugin.getConfig().getBoolean("join-message.enabled")) {
+        if (player.hasPermission("minecraft.receivejoinleave") && plugin.getConfig().getBoolean("join-message.enabled")) {
+            event.setJoinMessage(null); // Omitir el mensaje de entrada personalizado si el jugador ha optado por no recibir mensajes de entrada predeterminados
+        } else if (plugin.getConfig().getBoolean("join-message.enabled")) {
             String joinMessage = ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(player, plugin.getConfig().getString("join-message.text")));
             event.setJoinMessage(joinMessage);
         } else {
             event.setJoinMessage(null);
         }
+
+        String title = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("title-messages.title"));
+        String subtitle = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("title-messages.subtitle"));
+        int fadeIn = plugin.getConfig().getInt("title-messages.fade-in");
+        int stay = plugin.getConfig().getInt("title-messages.stay");
+        int fadeOut = plugin.getConfig().getInt("title-messages.fade-out");
+
+        if (plugin.getConfig().getBoolean("title-messages.enabled")) {
+            player.sendTitle(title, subtitle, fadeIn, stay, fadeOut);
+        }
     }
+
+
+
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-
-        // Mensaje de salida del servidor
-        if (plugin.getConfig().getBoolean("quit-message.enabled")) {
+        if (player.hasPermission("minecraft.receivejoinleave") && plugin.getConfig().getBoolean("quit-message.enabled")) {
+            event.setQuitMessage(null); // Omitir el mensaje de salida personalizado si el jugador ha optado por no recibir mensajes de salida predeterminados
+        } else if (plugin.getConfig().getBoolean("quit-message.enabled")) {
             String quitMessage = ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(player, plugin.getConfig().getString("quit-message.text")));
             event.setQuitMessage(quitMessage);
         } else {
             event.setQuitMessage(null);
         }
     }
+
 }
