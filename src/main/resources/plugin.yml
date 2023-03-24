@@ -4,4 +4,8 @@ author: azc0de
 main: me.azc0de.joinmessages.main
 dependencies:
   - PlaceholderAPI
-description: Un plugin personalizado para mensajes de entrada, salida y bienvenida con compatibilidad con PlaceholderAPI.
+description: A custom plugin for join, leave and welcome messages with PlaceholderAPI compatibility.
+permissions:
+  minecraft.receivejoinleave:
+    default: op
+    description: Allows a player to exclude themselves from the server's join and leave messages.
